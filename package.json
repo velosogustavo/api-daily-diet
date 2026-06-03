@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "knex": "tsx node_modules/knex/bin/cli.js",
-    "migrate:make": "npm run knex -- migrate:make"
+    "migrate:make": "npm run knex -- migrate:make",
+    "migrate:latest": "npm run knex -- migrate:latest"
   },
   "keywords": [],
   "author": "",
