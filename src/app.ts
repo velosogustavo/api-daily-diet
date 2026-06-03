@@ -1,8 +1,13 @@
 import fastify from 'fastify'
+import { usersRoutes } from './routes/users'
+import { mealsRoutes } from './routes/meals'
+import cookie from '@fastify/cookie'
 
 export const app = fastify()
 
-app.get('/', async function handler(request, reply) {
-    return reply.send({message: 'hello world'})
-    
-})
+
+app.register(usersRoutes)
+app.register(mealsRoutes)
+app.register(cookie)
+
+
