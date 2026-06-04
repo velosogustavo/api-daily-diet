@@ -6,22 +6,22 @@ import { knex } from '../database'
 export async function usersRoutes(app: FastifyInstance) {
     
     app.post('/', async (request, reply) => {
-        const createUser = z.object({
+        const createUserBodySchema = z.object({
             name: z.string(),
         })
 
-    const {name} = createUser.parse(request.body)
+    const {name} = createUserBodySchema.parse(request.body)
     
-    const session_id = randomUUID()
+    const sessionId = randomUUID()
 
     await knex('users').insert({
         id: randomUUID(),
-        session_id,
+        sessionId,
         name,
     })
 
 
-    reply.setCookie('sessionId', session_id, {path: '/'})
+    reply.setCookie('sessionId', sessionId, {path: '/'})
     
 
     return reply.status(201).send()

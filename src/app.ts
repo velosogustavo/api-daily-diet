@@ -6,8 +6,12 @@ import cookie from '@fastify/cookie'
 export const app = fastify()
 
 
-app.register(usersRoutes)
-app.register(mealsRoutes)
+app.register(usersRoutes, {
+    prefix: '/users'
+})
+app.register(mealsRoutes, {
+    prefix: '/meals'
+})
 app.register(cookie)
 
 
