@@ -1,6 +1,6 @@
 # 🥗 API Daily Diet
 
-Uma API REST para controle de dieta diária, construída com Fastify, TypeScript e SQLite.
+Uma API REST para controle de dieta diária, construída com Fastify, TypeScript e PostgreSQL.
 
 ## 📋 Sobre
 
@@ -11,7 +11,8 @@ Esta API permite que usuários registrem e gerenciem suas refeições diárias, 
 - **[Fastify](https://fastify.dev/)** — Framework web rápido e de baixo overhead
 - **[TypeScript](https://www.typescriptlang.org/)** — Tipagem estática para JavaScript
 - **[Knex.js](https://knexjs.org/)** — Query builder SQL e migrations
-- **[SQLite](https://www.sqlite.org/)** — Banco de dados relacional leve
+- **[PostgreSQL](https://www.postgresql.org/)** — Banco de dados relacional em produção (Neon)
+- **[SQLite](https://www.sqlite.org/)** — Banco de dados relacional leve para desenvolvimento e testes
 - **[Zod](https://zod.dev/)** — Validação de esquemas em tempo de execução
 - **[Vitest](https://vitest.dev/)** — Testes unitários e de integração
 - **[@fastify/cookie](https://github.com/fastify/fastify-cookie)** — Gerenciamento de cookies
