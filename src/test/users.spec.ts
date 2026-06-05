@@ -1,4 +1,4 @@
-import {describe, it, expect, beforeAll, afterAll, beforeEach} from 'vitest'
+import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest'
 import { execSync } from 'node:child_process'
 import request from 'supertest'
 import { knex } from '../database'
@@ -22,16 +22,11 @@ describe('Users routes', () => {
     })
 
     it('should be able to create a new user', async () => {
-        const createUserResponse = await request(app.server)
-        .post('/users')
-        .send({
-            name: 'John Doe'
-        })
-        .expect(201)
-    
-    expect(createUserResponse.headers['set-cookie']).toBeDefined()
+        const userResponse = await request(app.server)
+            .post('/users')
+            .send({ name: 'John Doe' })
+            .expect(201)
 
-
+        expect(userResponse.headers['set-cookie']).toBeDefined()
     })
-
 })
