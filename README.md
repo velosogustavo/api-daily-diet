@@ -39,6 +39,10 @@ db/
 └── migrations/                     # Migrations do banco de dados
 ```
 
+## 🌐 Deploy
+
+API disponível em produção: [https://api-daily-diet-1ouh.onrender.com](https://api-daily-diet-1ouh.onrender.com)
+
 ## ⚙️ Como Rodar
 
 ### Pré-requisitos

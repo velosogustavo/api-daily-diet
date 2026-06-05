@@ -7,6 +7,14 @@ export const app = fastify()
 
 app.register(cookie)
 
+app.get('/', async (request, reply) => {
+  return reply.send({
+    message: 'Daily Diet API',
+    version: '1.0.0',
+    docs: 'https://github.com/velosogustavo/api-daily-diet#-rotas-da-api',
+  })
+})
+
 app.register(usersRoutes, {
   prefix: '/users',
 })
