@@ -15,10 +15,10 @@ export async function usersRoutes(app: FastifyInstance) {
     const sessionId = randomUUID()
 
     await knex('users').insert({
-        id: randomUUID(),
-        sessionId,
-        name,
-    })
+      id: randomUUID(),
+      session_id: sessionId,
+      name,
+  })
 
 
     reply.setCookie('sessionId', sessionId, {path: '/'})

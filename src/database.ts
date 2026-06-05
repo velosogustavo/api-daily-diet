@@ -4,8 +4,8 @@ import {env} from './env'
 export const config: Knex.Config = {
     client: 'better-sqlite3',
     connection: {
-        filename: './db/app.db'
-    },
+          filename: env.NODE_ENV === 'test' ? './db/test.db' : './db/app.db'    
+        },
     useNullAsDefault: true,
     migrations: {
         directory: './db/migrations'
