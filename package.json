@@ -10,16 +10,19 @@
     "test": "vitest",
     "knex": "tsx node_modules/knex/bin/cli.js",
     "migrate:make": "npm run knex -- migrate:make",
-    "migrate:latest": "npm run knex -- migrate:latest"
+    "migrate:latest": "npm run knex -- migrate:latest",
+    "lint": "eslint src --ext .ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.9.1",
     "@types/supertest": "^7.2.0",
+    "eslint": "^8.57.1",
     "tsup": "^8.5.1",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
