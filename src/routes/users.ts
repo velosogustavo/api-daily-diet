@@ -19,7 +19,10 @@ export async function usersRoutes(app: FastifyInstance) {
       name,
     })
 
-    reply.setCookie('sessionId', sessionId, { path: '/' })
+    reply.setCookie('sessionId', sessionId, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    })
 
     return reply.status(201).send()
   })

@@ -23,6 +23,10 @@ export async function mealsRoutes(app: FastifyInstance) {
 
       const user = await knex('users').where('session_id', sessionId).first()
 
+      if (!user) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+      }
+
       await knex('meals').insert({
         id: randomUUID(),
         user_id: user.id,
@@ -44,6 +48,10 @@ export async function mealsRoutes(app: FastifyInstance) {
 
       const user = await knex('users').where('session_id', sessionId).first()
 
+      if (!user) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+      }
+
       const userMeals = await knex('meals').where('user_id', user.id)
 
       return reply.send({ meals: userMeals })
@@ -64,7 +72,15 @@ export async function mealsRoutes(app: FastifyInstance) {
 
       const user = await knex('users').where('session_id', sessionId).first()
 
+      if (!user) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+      }
+
       const meal = await knex('meals').where({ id, user_id: user.id }).first()
+
+      if (!meal) {
+        return reply.status(404).send({ error: 'Meal not found' })
+      }
 
       return reply.send({ meal })
     },
@@ -94,6 +110,10 @@ export async function mealsRoutes(app: FastifyInstance) {
 
       const user = await knex('users').where('session_id', sessionId).first()
 
+      if (!user) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+      }
+
       await knex('meals')
         .where({ user_id: user.id, id })
         .update({ name, description, is_on_diet, date_time })
@@ -116,6 +136,10 @@ export async function mealsRoutes(app: FastifyInstance) {
 
       const user = await knex('users').where('session_id', sessionId).first()
 
+      if (!user) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+      }
+
       await knex('meals').where({ user_id: user.id, id }).delete()
 
       return reply.status(204).send()
@@ -130,7 +154,13 @@ export async function mealsRoutes(app: FastifyInstance) {
 
       const user = await knex('users').where({ session_id: sessionId }).first()
 
-      const meals = await knex('meals').where('user_id', user.id)
+      if (!user) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+      }
+
+      const meals = await knex('meals')
+        .where('user_id', user.id)
+        .orderBy('date_time', 'asc')
 
       const totalMeals = meals.length
       const totalOnDiet = meals.filter((meal) => meal.is_on_diet).length
